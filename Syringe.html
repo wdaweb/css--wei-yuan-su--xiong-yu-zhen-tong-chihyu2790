@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 那個傳安問題只能translateZ解，不然就避免 */
+        * {
+            font-family: sans-serif;
+
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            /* 似乎不需要 */
+            box-sizing: border-box;
+        }
+
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8e1e4;
+        }
+
+        .container::before {
+            content: 'Made in Taiwan';
+            position: absolute;
+            color: #8f9395;
+            font-size: 20px;
+            line-height: 20px;
+            left: 1%;
+            bottom: 0;
+            width: 200px;
+            height: 25px;
+
+            box-shadow: none;
+        }
+
+        .container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background:
+                linear-gradient(90deg, rgba(241, 234, 227, 0) 80%, #2e3d47 20%) repeat-x left top/300px 100%,
+                linear-gradient(90deg, #faefeb00 90%, #8f9395 10%) repeat-x left top/20px 10px,
+                linear-gradient(0deg, rgb(221, 222, 230, 0), #f683914f, rgb(255, 255, 255, 0)),
+                linear-gradient(90deg, #faefeb 55%, #f68390 45%),
+                rgb(241, 234, 227);
+
+            border: 3px solid #8f9395;
+
+            width: 500px;
+            height: 100px;
+            margin: auto;
+
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            background:
+                linear-gradient(0deg, rgb(221, 222, 230, 0), #f683914f, rgb(255, 255, 255, 0)),
+                #faefeb;
+            border: 3px solid #8f9395;
+            border-radius: 5px;
+
+            right: 50%;
+            top: 50%;
+            transform: translate(50%, -50%);
+
+            width: 640px;
+            height: 80px;
+            z-index: -5;
+        }
+
+        .box {
+            position: absolute;
+
+            border: 3px solid #8f9395;
+
+            top: 0;
+            right: 0;
+            left: -140%;
+            bottom: 0;
+            background:
+                linear-gradient(0deg, rgb(221, 222, 230, 0), #f683914f, rgb(255, 255, 255, 0)),
+                #faefeb;
+
+            width: 80px;
+            height: 100px;
+            margin: auto;
+        }
+
+        .box::after {
+            content: '';
+            position: absolute;
+
+            background: #8f9395;
+
+            top: 50%;
+            transform: translate(700%, -50%);
+            width: 100px;
+            height: 3px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+
+</body>
+
+</html>
